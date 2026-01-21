@@ -21,6 +21,8 @@ from django.urls import path, include
 
 from django.http import HttpResponse
 
+from projects.views import home
+
 def register(request):
 
     return HttpResponse('This is the registration page!')
@@ -41,8 +43,12 @@ urlpatterns = [
 
     path('my-login/', my_login),
 
-    path('', home),
+    path('', home, name='home'),
+
+    path('projects/', include('projects.urls')),
 
     path('accounts/', include('django.contrib.auth.urls')),
+
+
 ]
 
